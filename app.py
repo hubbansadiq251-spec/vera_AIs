@@ -8,7 +8,7 @@ api_key = st.secrets["GEMINI_API_KEY"]
 genai.configure(api_key=api_key)
 
 # 404 Error ko khatam karne ke liye full path name use kar rahe hain
-model = genai.GenerativeModel('models/gemini-1.5-flash-latest')
+model = genai.GenerativeModelmodel('gemini-1.0-pro')
 
 user_input = st.text_input("Ask anything:")
 
