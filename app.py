@@ -1,17 +1,18 @@
 import streamlit as st
 import google.generativeai as genai
-import os
 
 st.title("🌐 NHS AIs - Vera Intelligence")
 
-# API key ko direct fetch karein
+# Secret key ko direct access karein
 api_key = st.secrets["GEMINI_API_KEY"]
 genai.configure(api_key=api_key)
 
-model = genai.GenerativeModel('gemini-1.5-flash')
+# Model ko change karke 'gemini-pro' try karein, ye 404 nahi dega
+model = genai.GenerativeModel('gemini-pro')
 
 user_input = st.text_input("Ask anything:")
 
 if st.button("Analyze"):
-    response = model.generate_content(user_input)
-    st.write(response.text)
+    if user_input:
+        response = model.generate_content(user_input)
+        st.write(response.text)
