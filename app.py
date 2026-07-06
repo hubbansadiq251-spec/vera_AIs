@@ -1,14 +1,11 @@
 import streamlit as st
 import google.generativeai as genai
-import os
 
 st.title("🌐 NHS AIs - Vera Intelligence")
 
-# Environment variable se key uthayein (jo humne Secrets mein daali hai)
-api_key = os.environ.get("GEMINI_API_KEY")
-genai.configure(api_key=api_key)
+# Yahan apni API key quotes ke andar seedhi likhein (Testing ke liye)
+genai.configure(api_key="PASTE_YOUR_ACTUAL_API_KEY_HERE_WITHOUT_QUOTES_AROUND_THE_WHOLE_COMMAND")
 
-# Basic model jo har jagah chalta hai
 model = genai.GenerativeModel('gemini-pro')
 
 user_input = st.text_input("Ask anything:")
@@ -19,4 +16,4 @@ if st.button("Analyze"):
             response = model.generate_content(user_input)
             st.write(response.text)
         except Exception as e:
-            st.error(f"Error: {e}")
+            st.write("Error details:", e)
