@@ -4,7 +4,7 @@ import google.generativeai as genai
 st.title("🌐 NHS AIs - Vera Intelligence")
 
 # Yahan apni API key quotes ke andar seedhi likhein (Testing ke liye)
-genai.configure(api_key="PASTE_YOUR_ACTUAL_API_KEY_HERE_WITHOUT_QUOTES_AROUND_THE_WHOLE_COMMAND")
+genai.configure(api_key="AQ.Ab8RN6Kya3dxmhP9BLUhP-s9HWLVTaJyk3zfsuL__sv0WmOyhA")
 
 model = genai.GenerativeModel('gemini-pro')
 
