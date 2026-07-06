@@ -3,16 +3,22 @@ import google.generativeai as genai
 
 st.title("🌐 NHS AIs - Vera Intelligence")
 
-# Secret key ko direct access karein
+# API Key
 api_key = st.secrets["GEMINI_API_KEY"]
 genai.configure(api_key=api_key)
 
-# Model ko change karke 'gemini-pro' try karein, ye 404 nahi dega
-model = genai.GenerativeModel('gemini-pro')
+# Model setup
+model = genai.GenerativeModel('gemini-1.5-flash')
 
 user_input = st.text_input("Ask anything:")
 
+# Button click hone par aur input hone par hi code chale
 if st.button("Analyze"):
     if user_input:
-        response = model.generate_content(user_input)
-        st.write(response.text)
+        try:
+            response = model.generate_content(user_input)
+            st.write(response.text)
+        except Exception as e:
+            st.error(f"Error: {e}")
+    else:
+        st.warning("Please enter a question first!")
