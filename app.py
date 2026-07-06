@@ -3,16 +3,15 @@ import google.generativeai as genai
 
 st.title("🌐 NHS AIs - Vera Intelligence")
 
-# API Key
+# API Key fetching from Streamlit Secrets
 api_key = st.secrets["GEMINI_API_KEY"]
 genai.configure(api_key=api_key)
 
-# Model setup
-model = genai.GenerativeModel('gemini-1.5-flash')
+# 404 Error ko khatam karne ke liye full path name use kar rahe hain
+model = genai.GenerativeModel('models/gemini-1.5-flash-latest')
 
 user_input = st.text_input("Ask anything:")
 
-# Button click hone par aur input hone par hi code chale
 if st.button("Analyze"):
     if user_input:
         try:
